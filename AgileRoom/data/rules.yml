@@ -1,0 +1,43 @@
+version: "2.0"
+
+rules:
+
+- rule: saludo
+  steps:
+  - intent: saludo
+  - action: utter_saludo
+
+- rule: presentacion
+  steps:
+  - intent: presentacion
+  - action: action_guardar_nombre
+
+- rule: agradecimiento
+  steps:
+  - intent: agradecimiento
+  - action: utter_agradecimiento
+
+- rule: creacion sala
+  steps:
+  - intent: crear_sala
+  - action: utter_preguntar_tamanio_room
+  
+- rule: pedir objetos
+  steps:
+  - intent: informar_tamanio_room
+  - action: action_guardar_tamanio
+  - action: utter_preguntar_objetos
+  
+- rule: informacion objeto
+  steps:
+  - intent: informar_objeto
+  - action: utter_pedir_cantidad
+
+- rule: preguntar posiciones
+  steps:
+  - intent: informar_cantidad
+  - action: utter_pedir_posiciones
+
+
+
+

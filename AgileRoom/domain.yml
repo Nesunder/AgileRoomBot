@@ -1,0 +1,96 @@
+version: '2.0'
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
+
+intents:
+  - informar_tamanio_room
+  - informar_posicion
+  - informar_objeto
+  - crear_sala
+  - informar_cantidad
+  - negacion
+  - afirmar+informar_objeto
+  - afirmacion
+  - despedida
+  - saludo
+  - agradecimiento
+  - presentacion
+entities:
+  - cantidad
+  - nombre
+  - objeto
+  - posicion
+  - tamanio_room
+slots:
+  nombre:
+    type: text
+    influence_conversation: true
+  objeto:
+    type: text
+    influence_conversation: true
+  cantidad:
+    type: float
+    influence_conversation: true
+    max_value: 1.0
+    min_value: 0.0
+  tamanio_room:
+    type: any
+    influence_conversation: false
+  posicion:
+    type: any
+    influence_conversation: false
+  info_objeto:
+    type: any
+    influence_conversation: false
+  numero_id:
+    type: float
+    initial_value: 0.0
+    influence_conversation: false
+
+responses:
+  utter_saludo:
+    - text: Hola, soy AgileRoom y puedo crear rooms dinámicos a tu medida, con quien tengo el gusto?
+  utter_despedida:
+    - text: Nos vemos
+    - text: Hasta luego
+
+  utter_agradecimiento:
+    - text: No hay de que!
+
+  utter_preguntar_tamanio_room:
+    - text: 'De qué tamaño? Por favor, escríbalo con el siguiente formato: 20x20'
+    - text: 'Me podrías decir el tamaño? Por favor, escríbalo con el siguiente formato: 30x15'
+    - text: 'Digame el tamaño, por favor. Escribalo con el siguiente formato: 25x30'
+
+  utter_preguntar_objetos:
+    - text: Para crear el room correctamente, necesito que me diga los objetos que necesita uno por uno, junto con los datos que le pediré. De acuerdo?
+  
+  utter_pedir_primer_obj:
+    - text: Digame el objeto en cuestión, por favor
+    - text: Cuál es el objeto?
+  
+  utter_pedir_cantidad:
+    - text: Que cantidad necesita?
+    - text: Qué cantidad?
+    - text: Digame la cantidad
+  
+  utter_pedir_posiciones:
+    - text: 'En qué posiciónes? Si es más de un objeto necesito que me las informe en el siguiente formato: 2,20; 15,10; 10,15 '
+  
+  utter_preguntar_siguiente_objeto:
+    - text: Necesitás otro objeto?
+    - text: Qué otro objeto necesitás?
+
+actions:
+  - action_guardar_nombre
+  - action_guardar_objeto
+  - action_guardar_tamanio
+  - utter_despedida
+  - utter_pedir_cantidad
+  - utter_pedir_posiciones
+  - utter_pedir_primer_obj
+  - utter_preguntar_objetos
+  - utter_preguntar_siguiente_objeto
+  - utter_preguntar_tamanio_room

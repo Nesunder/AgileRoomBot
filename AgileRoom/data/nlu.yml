@@ -1,0 +1,239 @@
+version: "2.0"
+nlu:
+- intent: saludo
+  examples: |
+    - Hola
+    - Buen dia
+    - Buenas tardes
+    - Buenas noches
+    - Como andas
+    - Holis
+    - Hola que tal
+    
+- intent: presentacion
+  examples: |
+    - [Marcelo](nombre)
+    - [julian](nombre)
+    - [nicolas](nombre)
+    - [yamila](nombre)
+    - soy [Marcelo](nombre)
+    - soy [julian](nombre)
+    - soy [nicolas](nombre)
+    - soy [yamila](nombre)
+    - [juli](nombre)
+    - [yami](nombre)
+    - [nico](nombre)
+
+- intent: despedida
+  examples: |
+    - Nos vemos
+    - Hasta luego
+    - Nos vemos luego
+    - Chau
+    - Que tengas buenas noches
+    - Que tengas buen dia
+    - Que tengas una buena tarde
+    - Hasta pronto
+    - Nos estamos viendo
+    - En un rato vuelvo
+    - Nos vemos mas tarde
+    - no, chau
+    - nos vemos
+
+- intent: agradecimiento
+  examples: |
+    - Gracias
+    - Te lo agradezco
+    - Estoy agradecido
+    - Muchas gracias
+
+- intent: afirmacion
+  examples: |
+    - Si
+    - Por supuesto
+    - Suena bien
+    - Correcto
+    - Afirmativo
+    - Me parece bien
+    - De acuerdo
+    - Perfecto
+    - Joya
+    - Dale
+    - Ok
+    - ok
+
+- intent: negacion
+  examples: |
+    - No
+    - Nunca
+    - No suena bien
+    - Negativo
+    - No lo creo
+    - No me gusta eso
+    - De ninguna forma
+    - La verdad que no
+    - No, no quiero
+    - Ninguno más
+    - No, no necesito más
+    - No necesito otro
+    - No necesito más
+    - ninguno mas
+
+- intent: crear_sala
+  examples: |
+    - Quiero crear una sala
+    - Me gustaría crear una sala
+    - Estaba pensando en crear una sala
+    - Tengo que crear un room
+    - Quiero crear un room
+    - Estaba pensando en crear un room
+    - Necesito un room
+    - crear un room
+    - hola, quiero crear un room
+    - quiero crear un room
+
+- intent: informar_tamanio_room
+  examples: |
+    - el tamaño es de [10x10](tamanio_room)
+    - el tamaño es de [20x20](tamanio_room)
+    - el tamaño es de [15x20](tamanio_room)
+    - el tamaño es de [15x30](tamanio_room)
+    - el tamaño es de [20x30](tamanio_room)
+    - [10x10](tamanio_room)
+    - [20x20](tamanio_room)
+    - [15x20](tamanio_room)
+    - [15x30](tamanio_room)
+    - [20x30](tamanio_room)
+    - la sala va a tener [20x30](tamanio_room) baldosas
+    - la sala va a tener [15x30](tamanio_room) baldosas
+    - la sala va a medir [20x30](tamanio_room) baldosas
+    - la sala va a medir [15x30](tamanio_room)
+
+- intent: informar_objeto
+  examples: |
+    - quiero que tenga una [mesa](objeto)
+    - quiero que tenga [mesas](objeto)
+    - necesito [mesas](objeto)
+    - quiero que tenga un [kanban](objeto)
+    - quiero que tenga [televisores](objeto)
+    - necesito que haya [pizarras](objeto)
+    - voy a necesitar [computadoras](objeto)
+    - ponele una [computadora]
+    - Instanciame una [silla](objeto)
+    - Necesito que crees una [pizarra](objeto)
+    - quiero que haya un [kanban](objeto)
+    - quiero crear [mesas](objeto)
+    - quiero crear una [mesa](objeto)
+    - quiero crear un [televisor](objeto)
+    - quiero crear algunos [televisores](objeto)
+    - quiero crear algunas [computadoras](objeto)
+    - voy a necesitar un [kanban](objeto)
+
+- intent: afirmar+informar_objeto
+  examples: |
+    - Si, quiero que tenga una [mesa](objeto)
+    - Si, quiero que tenga [mesas](objeto)
+    - Si, necesito [mesas](objeto)
+    - Si, quiero que tenga un [kanban](objeto)
+    - Si, quiero que tenga [televisores](objeto)
+    - Ahora que lo pienso, necesito que haya [pizarras](objeto)
+    - Sep, voy a necesitar [computadoras](objeto)
+    - Afirmativo, ponele una [computadora]
+    - Pensandolo bie, voy a agregar un [kanban](objeto)
+    - Si, instanciame una [silla](objeto)
+    - Correcto, necesito un [kanban](objeto)
+    - quiero que haya [kanbans](objeto)
+    - quiero que haya un [kanban](objeto)
+    - si, quiero que tenga una [mesa](objeto)
+
+- intent: informar_cantidad
+  examples: |
+    - necesito [1](cantidad)
+    - necesito [2](cantidad)
+    - necesito [3](cantidad)
+    - necesito [4](cantidad)
+    - necesito [5](cantidad)
+    - necesito [9](cantidad)
+    - necesito [10](cantidad)
+    - necesito [15](cantidad)
+    - necesito [20](cantidad)
+    - [1](cantidad)
+    - [2](cantidad)
+    - [3](cantidad)
+    - [4](cantidad)
+    - [5](cantidad)
+    - [7](cantidad)
+    - [9](cantidad)
+    - [10](cantidad)
+    - [15](cantidad)
+    - [20](cantidad)
+    - quiero [1](cantidad)
+    - quiero [2](cantidad)
+    - quiero [3](cantidad)
+    - quiero [4](cantidad)
+    - quiero [5](cantidad)
+    - quiero [9](cantidad)
+    - quiero [10](cantidad)
+    - quiero [15](cantidad)
+    - quiero [20](cantidad)
+
+- intent: informar_posicion
+  examples: |
+    - [5,5; 10,10; 20,20](posicion)
+    - [10,10; 5,5](posicion)
+    - la posición es [5,5](posicion)
+    - posicion: [10,10](posicion)
+    - posicion: [15,20](posicion)
+    - posicion: [13,18](posicion)
+    - posicion: [7,19](posicion)
+    - la posicion es [10,10](posicion)
+    - la posicion es [15,20](posicion)
+    - la posicion es [13,18](posicion)
+    - la posicion es [7,19](posicion)
+    - las posiciones son [5,5; 15,20; 13,18](posicion)
+    - las posiciones son [5,5;15,20;13,18;7,19;10,10](posicion)
+    - [5,5;15,20;13,18;7,19;10,10](posicion)
+    - [5,5; 15,20; 13,18](posicion)
+    - [17,23;15,20;4,7;10,19;10,10](posicion)
+    - [17,23; 15,20; 4,7; 10,19; 10,10](posicion)
+    - posicion: [17,23;15,20;4,7;10,19;10,10](posicion)
+    - posicion: [17,23; 15,20; 4,7; 10,19; 10,10](posicion)
+    - [15,10;10,15](posicion)
+
+- regex: cantidad
+  examples: |
+    - \d{1, }
+
+- regex: posicion
+  examples: |
+    - (((\d{1,2},\s*\d{1,2}))+;* *){1,}
+
+- regex: tamanio_room
+  examples: |
+    - \d{1,2}\s*X\s*\d{1,2}
+    - \d{1,2}\s*x\s*\d{1,2}
+
+- lookup: objeto
+  examples: |
+    - mesa
+    - mesas
+    - kanban
+    - kanbans
+    - silla
+    - sillas
+    - televisor
+    - televisores
+    - biblioteca
+    - bibliotecas
+    - estanteria
+    - estanterías
+    - pizarra
+    - pizarras
+    - mesa dividida
+    - computadora
+    - computadoras
+    - proyector
+    - armario vidriado
+    - armario
+    - sillon
+    - sillones

@@ -16,7 +16,6 @@ from rasa_sdk.events import SlotSet
 from actions.event_handling import EventPublisher
 
 import json
-import requests
 
 url='http://127.0.0.1:5000/dispatcher/send-message'  
     
@@ -55,15 +54,11 @@ class ActionGuardarTamanio(Action):
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
 
         tamanio_room = str(tracker.get_slot("tamanio_room"))
-        #dispatcher.utter_message(text=tamanio_room)
-    
+            
         arreglo_tamanio = tamanio_room.split("x")
         tamanio_x = arreglo_tamanio[0] 
         tamanio_z = arreglo_tamanio[1]
-        #dispatcher.utter_message(text=str(tamanio_x))
-
-        #dispatcher.utter_message(text=str(tamanio_z))
-        #determinar que hacer con la respuesta para mandarle los datos a unity o responder que no se puede crear el room
+        
         dispatcher.utter_message(text = "Crear room," + tamanio_x + "," + tamanio_z)
         return [SlotSet("tamanio_x", tamanio_x), SlotSet("tamanio_z", tamanio_z)]  
         
@@ -84,8 +79,6 @@ class ActionGuardarObjeto(Action):
         arreglo_posicion = posicion.split(";")
         
         if(len(arreglo_posicion) != int(cantidad)):
-            #probablemente deba hacer una acción que resetee los slots y pregunte de nuevo o vuelva a preguntar las posiciones
-            #Seguro sea mejor lo segundo
             dispatcher.utter_message(text="Al parecer ingresó una cantidad diferente de posiciones a la cantidad de objetos especificada")
             return [SlotSet("posicion", None)]   
 

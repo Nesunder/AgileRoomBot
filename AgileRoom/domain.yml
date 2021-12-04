@@ -41,9 +41,19 @@ slots:
   posicion:
     type: any
     influence_conversation: false
-  info_objeto:
-    type: any
+  tamanio_x:
+    type: text
     influence_conversation: false
+  tamanio_z:
+    type: text
+    influence_conversation: false
+  pos_x:
+    type: text
+    influence_conversation: false
+  pos_z:
+    type: text
+    influence_conversation: false
+  
   numero_id:
     type: float
     initial_value: 0.0

@@ -1,4 +1,4 @@
-version: "2.0"
+version: "3.1"
 
 rules:
 
@@ -38,6 +38,18 @@ rules:
   - intent: informar_cantidad
   - action: utter_pedir_posiciones
 
+- rule: microlearning
+  steps:
+  - intent: aprender
+  - action: action_determinar_room
+  - action: utter_informar_microlearning
+  - action: utter_preguntar_necesita_algo_mas
+
+- rule: guarda objeto
+  steps:
+  - intent: informar_posicion
+  - action: action_guardar_objeto
+  - action: utter_preguntar_siguiente_objeto
 
 
 

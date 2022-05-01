@@ -57,7 +57,7 @@ class ActionGuardarObjeto(Action):
         
         if(len(arreglo_posicion) != int(cantidad)):
             dispatcher.utter_message(text="Al parecer ingresó una cantidad diferente de posiciones a la cantidad de objetos especificada")
-            return [SlotSet("posicion", None)]   
+            return [SlotSet("posicion", None)]  
 
         for pos in arreglo_posicion:    
             
@@ -68,3 +68,21 @@ class ActionGuardarObjeto(Action):
         
         return []  
      
+class ActionDeterminarRoom(Action):
+        def name(self) -> Text: 
+            return "action_determinar_room"  
+
+        def run(self, dispatcher: CollectingDispatcher,tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+            
+            tema_microlearning = str(tracker.get_slot("tema_microlearning"))
+            
+            if(tema_microlearning == "crear un room"):
+                dispatcher.utter_message(text = "Crear room," + "20"+ "," + "20")
+                return[]
+
+            #tal vez tener un mapa donde las claves sean los temas y los valores sean los tipos de rooms
+            room_microlearning = "RoomBanco"
+            dispatcher.utter_message(text = "Room microlearning," + room_microlearning + "," + tema_microlearning)
+            return[]
+        

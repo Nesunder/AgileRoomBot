@@ -1,4 +1,4 @@
-version: "2.0"
+version: "3.1"
 nlu:
 - intent: saludo
   examples: |
@@ -9,7 +9,6 @@ nlu:
     - Como andas
     - Holis
     - Hola que tal
-    
 - intent: presentacion
   examples: |
     - [Marcelo](nombre)
@@ -23,7 +22,6 @@ nlu:
     - [juli](nombre)
     - [yami](nombre)
     - [nico](nombre)
-
 - intent: despedida
   examples: |
     - Nos vemos
@@ -39,14 +37,13 @@ nlu:
     - Nos vemos mas tarde
     - no, chau
     - nos vemos
-
 - intent: agradecimiento
   examples: |
     - Gracias
     - Te lo agradezco
     - Estoy agradecido
     - Muchas gracias
-
+    - no, gracias
 - intent: afirmacion
   examples: |
     - Si
@@ -61,7 +58,8 @@ nlu:
     - Dale
     - Ok
     - ok
-
+    - de acuerdo
+    - si
 - intent: negacion
   examples: |
     - No
@@ -78,7 +76,8 @@ nlu:
     - No necesito otro
     - No necesito más
     - ninguno mas
-
+    - no
+    - ninguno más
 - intent: crear_sala
   examples: |
     - Quiero crear una sala
@@ -91,7 +90,33 @@ nlu:
     - crear un room
     - hola, quiero crear un room
     - quiero crear un room
-
+    - si, quiero crear un room
+- intent: aprender
+  examples: |
+    - quiero aprender a [crear un room](tema_microlearning)
+    - no se como [crear un room](tema_microlearning)
+    - me gustaría saber como [sacar plata del cajero](tema_microlearning)
+    - me gustaría saber como [sacar plata de un cajero](tema_microlearning)
+    - quiero aprender a [sacar plata de un cajero](tema_microlearning)
+    - como se hace para [sacar plata del cajero](tema_microlearning)
+    - como se hace para [sacar plata de un cajero](tema_microlearning)
+    - me podrías mostrar como [cambiar la contraseña](tema_microlearning) del banco
+    - necesito saber como [cambiar la contraseña del cajero](tema_microlearning)
+    - necesito ayuda para [cambiar la contraseña del cajero](tema_microlearning)
+    - me gustaria saber como [sacar plata del cajero](tema_microlearning) del [banco](room_microlearning)
+    - hola, necesito saber como [sacar plata de un cajero](tema_microlearning)
+- intent: afirmar+aprender
+  examples: |
+    - Si, quiero aprender a [crear un room](tema_microlearning)
+    - Si, no se como [crear un room](tema_microlearning)
+    - Si, como se hace para [sacar plata del cajero](tema_microlearning)
+    - Si, me gustaría saber como [sacar plata del cajero](tema_microlearning)
+    - Si, me podrías mostrar como [cambiar la contraseña](tema_microlearning) del banco[room_microlearning]
+    - Ahora que lo pienso, no se como [crear un room](tema_microlearning)
+    - Sep, quiero aprender a [crear un room](tema_microlearning)
+    - Afirmativo, me gustaría saber como [sacar plata del cajero](tema_microlearning)]
+    - Pensandolo bien, necesito saber como [cambiar la contraseña](tema_microlearning)
+    - Correcto, como se hace para [sacar plata del cajero](tema_microlearning)
 - intent: informar_tamanio_room
   examples: |
     - el tamaño es de [10x10](tamanio_room)
@@ -108,7 +133,6 @@ nlu:
     - la sala va a tener [15x30](tamanio_room) baldosas
     - la sala va a medir [20x30](tamanio_room) baldosas
     - la sala va a medir [15x30](tamanio_room)
-
 - intent: informar_objeto
   examples: |
     - quiero que tenga una [mesa](objeto)
@@ -145,7 +169,6 @@ nlu:
     - quiero que haya [kanbans](objeto)
     - quiero que haya un [kanban](objeto)
     - si, quiero que tenga una [mesa](objeto)
-
 - intent: informar_cantidad
   examples: |
     - necesito [1](cantidad)
@@ -176,7 +199,7 @@ nlu:
     - quiero [10](cantidad)
     - quiero [15](cantidad)
     - quiero [20](cantidad)
-
+    - [1](cantidad)
 - intent: informar_posicion
   examples: |
     - [5,5; 10,10; 20,20](posicion)
@@ -203,16 +226,13 @@ nlu:
 - regex: cantidad
   examples: |
     - \d{1, }
-
 - regex: posicion
   examples: |
     - (((\d{1,2},\s*\d{1,2}))+;* *){1,}
-
 - regex: tamanio_room
   examples: |
     - \d{1,2}\s*X\s*\d{1,2}
     - \d{1,2}\s*x\s*\d{1,2}
-
 - lookup: objeto
   examples: |
     - mesa

@@ -1,4 +1,4 @@
-version: "2.0"
+version: "3.1"
 
 stories:
 - story: creacion sala 
@@ -16,74 +16,47 @@ stories:
     - action: action_guardar_objeto
     - action: utter_preguntar_siguiente_objeto
 
-
-- story: interactive_story_1
+- story: creacion varias salas
   steps:
-  - intent: crear_sala
-  - action: utter_preguntar_tamanio_room
-  - intent: informar_tamanio_room
-    entities:
-    - tamanio_room: 20x20
-  - slot_was_set:
-    - tamanio_room: 20x20
-  - action: action_guardar_tamanio
-  - action: utter_preguntar_objetos
-  - intent: afirmacion
-  - action: utter_pedir_primer_obj
-  - intent: informar_objeto
-    entities:
-    - objeto: kanban
-  - slot_was_set:
-    - objeto: kanban
-  - action: utter_pedir_cantidad
-  - intent: informar_cantidad
-    entities:
-    - cantidad: '2'
-  - slot_was_set:
-    - cantidad: '2'
-  - action: utter_pedir_posiciones
-  - intent: informar_posicion
-    entities:
-    - posicion: 15,10;10,15
-  - slot_was_set:
-    - posicion: 15,10;10,15
-  - action: action_guardar_objeto
-  - action: utter_preguntar_siguiente_objeto
-  - intent: negacion
-  - action: utter_despedida
+    - intent: crear_sala
+    - action: utter_preguntar_tamanio_room
+    - intent: informar_tamanio_room
+    - action: action_guardar_tamanio
+    - action: utter_preguntar_objetos
+    - intent: informar_objeto
+    - action: utter_pedir_cantidad
+    - intent: informar_cantidad 
+    - action: utter_pedir_posiciones
+    - intent: informar_posicion
+    - action: action_guardar_objeto
+    - action: utter_preguntar_siguiente_objeto
+    - intent: negacion
+    - action: utter_preguntar_necesita_algo_mas
+    - intent: afirmacion
+    - action: utter_preguntar_que_necesita
+    - intent: crear_sala
+    - action: utter_preguntar_tamanio_room
 
-- story: interactive_story_2
+- story: microlearning
   steps:
-  - intent: crear_sala
-  - action: utter_preguntar_tamanio_room
-  - intent: informar_tamanio_room
-    entities:
-    - tamanio_room: 20x20
-  - slot_was_set:
-    - tamanio_room: 20x20
-  - action: action_guardar_tamanio
-  - action: utter_preguntar_objetos
-  - intent: afirmacion
-  - action: utter_pedir_primer_obj
-  - intent: informar_objeto
-    entities:
-    - objeto: kanban
-  - slot_was_set:
-    - objeto: kanban
-  - action: utter_pedir_cantidad
-  - intent: informar_cantidad
-    entities:
-    - cantidad: '2'
-  - slot_was_set:
-    - cantidad: '2'
-  - action: utter_pedir_posiciones
-  - intent: informar_posicion
-    entities:
-    - posicion: 15,10;10,15
-  - slot_was_set:
-    - posicion: 15,10;10,15
-  - action: action_guardar_objeto
-  - action: utter_preguntar_siguiente_objeto
+    - intent: aprender
+    - action: action_determinar_room
+    - action: utter_informar_microlearning
+    - action: utter_preguntar_necesita_algo_mas
+    - intent: negacion
+    - action: utter_despedida
+
+
+- story: microlearning_crear_room
+  steps:
+    - intent: aprender
+    - action: action_determinar_room
+    - action: utter_informar_microlearning
+    - action: utter_preguntar_necesita_algo_mas
+    - intent: afirmacion
+    - action: utter_preguntar_que_necesita
+    - intent: crear_sala
+    - action: utter_preguntar_tamanio_room
 
 - story: crear_room_varios_objetos
   steps:
@@ -137,5 +110,214 @@ stories:
   - action: action_guardar_objeto
   - action: utter_preguntar_siguiente_objeto
   - intent: negacion
+  - action: utter_preguntar_necesita_algo_mas
+  - intent: negacion
   - action: utter_despedida
-  - intent: despedida
+  
+- story: crear_room_aprender
+  steps:
+  - intent: crear_sala
+  - action: utter_preguntar_tamanio_room
+  - intent: informar_tamanio_room
+    entities:
+    - tamanio_room: 20x20
+  - slot_was_set:
+    - tamanio_room: 20x20
+  - action: action_guardar_tamanio
+  - action: utter_preguntar_objetos
+  - intent: afirmacion
+  - action: utter_pedir_primer_obj
+  - intent: informar_objeto
+    entities:
+    - objeto: kanban
+  - slot_was_set:
+    - objeto: kanban
+  - action: utter_pedir_cantidad
+  - intent: informar_cantidad
+    entities:
+    - cantidad: '2'
+  - slot_was_set:
+    - cantidad: '2'
+  - action: utter_pedir_posiciones
+  - intent: informar_posicion
+    entities:
+    - posicion: 15,10;10,15
+  - slot_was_set:
+    - posicion: 15,10;10,15
+  - action: action_guardar_objeto
+  - action: utter_preguntar_siguiente_objeto
+  - intent: negacion
+  - action: utter_preguntar_necesita_algo_mas
+  - intent: afirmacion
+  - action: utter_preguntar_que_necesita
+  - intent: aprender
+  - action: action_determinar_room
+  - action: utter_informar_microlearning
+  - action: utter_preguntar_necesita_algo_mas
+  - intent: negacion
+  - action: utter_despedida
+
+- story: crear_room_aprender_directo
+  steps:
+  - intent: crear_sala
+  - action: utter_preguntar_tamanio_room
+  - intent: informar_tamanio_room
+    entities:
+    - tamanio_room: 30x20
+  - slot_was_set:
+    - tamanio_room: 30x20
+  - action: action_guardar_tamanio
+  - action: utter_preguntar_objetos
+  - intent: afirmacion
+  - action: utter_pedir_primer_obj
+  - intent: informar_objeto
+    entities:
+    - objeto: kanban
+  - slot_was_set:
+    - objeto: kanban
+  - action: utter_pedir_cantidad
+  - intent: informar_cantidad
+    entities:
+    - cantidad: '3'
+  - slot_was_set:
+    - cantidad: '3'
+  - action: utter_pedir_posiciones
+  - intent: informar_posicion
+    entities:
+    - posicion: 17,10;20,15
+  - slot_was_set:
+    - posicion: 17,10;20,15
+  - action: action_guardar_objeto
+  - action: utter_preguntar_siguiente_objeto
+  - intent: negacion
+  - action: utter_preguntar_necesita_algo_mas
+  - intent: afirmar+aprender
+  - action: action_determinar_room
+
+- story: interactive_story_crear_aprender
+  steps:
+  - intent: crear_sala
+  - action: utter_preguntar_tamanio_room
+  - intent: informar_tamanio_room
+    entities:
+    - tamanio_room: 30x30
+    - tamanio_room: 30x30
+    - tamanio_room: 30x30
+  - slot_was_set:
+    - tamanio_room: 30x30
+  - action: action_guardar_tamanio
+  - slot_was_set:
+    - tamanio_x: '30'
+  - slot_was_set:
+    - tamanio_z: '30'
+  - action: utter_preguntar_objetos
+  - intent: afirmacion
+  - action: utter_pedir_primer_obj
+  - intent: informar_objeto
+    entities:
+    - objeto: mesa
+    - objeto: mesa
+  - slot_was_set:
+    - objeto: mesa
+  - action: utter_pedir_cantidad
+  - intent: informar_cantidad
+    entities:
+    - cantidad: '1'
+  - slot_was_set:
+    - cantidad: '1'
+  - action: utter_pedir_posiciones
+  - intent: informar_posicion
+    entities:
+    - posicion: 15,17
+    - posicion: 15,17
+  - slot_was_set:
+    - posicion: 15,17
+  - action: action_guardar_objeto
+  - action: utter_preguntar_siguiente_objeto
+  - intent: negacion
+  - action: utter_preguntar_necesita_algo_mas
+  - intent: afirmacion
+  - action: utter_preguntar_que_necesita
+  - intent: aprender
+    entities:
+    - tema_microlearning: sacar plata del cajero
+  - slot_was_set:
+    - tema_microlearning: sacar plata del cajero
+  - action: action_determinar_room
+  - action: utter_informar_microlearning
+  - action: utter_preguntar_necesita_algo_mas
+  - intent: negacion
+  - action: utter_despedida
+
+
+- story: interactive_story_1
+  steps:
+  - intent: aprender
+    entities:
+    - tema_microlearning: sacar plata de un cajero
+  - slot_was_set:
+    - tema_microlearning: sacar plata de un cajero
+  - action: action_determinar_room
+  - action: utter_informar_microlearning
+  - action: utter_preguntar_necesita_algo_mas
+  - intent: crear_sala
+  - action: utter_preguntar_tamanio_room
+  - intent: informar_tamanio_room
+    entities:
+    - tamanio_room: 20x20
+    - tamanio_room: 20x20
+    - tamanio_room: 20x20
+  - slot_was_set:
+    - tamanio_room: 20x20
+  - action: action_guardar_tamanio
+  - slot_was_set:
+    - tamanio_x: '20'
+  - slot_was_set:
+    - tamanio_z: '20'
+  - action: utter_preguntar_objetos
+  - intent: afirmacion
+  - action: utter_pedir_primer_obj
+  - intent: informar_objeto
+    entities:
+    - objeto: mesa
+    - objeto: mesa
+  - slot_was_set:
+    - objeto: mesa
+  - action: utter_pedir_cantidad
+  - intent: informar_cantidad
+    entities:
+    - cantidad: '1'
+  - slot_was_set:
+    - cantidad: '1'
+  - action: utter_pedir_posiciones
+  - intent: informar_posicion
+    entities:
+    - posicion: 10,10
+    - posicion: 10,10
+  - slot_was_set:
+    - posicion: 10,10
+  - action: action_guardar_objeto
+  - action: utter_preguntar_siguiente_objeto
+  - intent: informar_objeto
+    entities:
+    - objeto: kanban
+    - objeto: kanban
+  - slot_was_set:
+    - objeto: kanban
+  - action: utter_pedir_cantidad
+  - intent: informar_cantidad
+    entities:
+    - cantidad: '1'
+  - action: utter_pedir_posiciones
+  - intent: informar_posicion
+    entities:
+    - posicion: 10,0
+    - posicion: 10,0
+  - slot_was_set:
+    - posicion: 10,0
+  - action: action_guardar_objeto
+  - action: utter_preguntar_siguiente_objeto
+  - intent: negacion
+  - action: utter_preguntar_necesita_algo_mas
+  - intent: agradecimiento
+  - action: utter_agradecimiento

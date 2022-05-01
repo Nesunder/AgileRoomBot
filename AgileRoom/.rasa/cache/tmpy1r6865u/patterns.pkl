@@ -1,0 +1,22 @@
+[
+  {
+    "name": "cantidad",
+    "pattern": "\\d{1, }"
+  },
+  {
+    "name": "posicion",
+    "pattern": "(((\\d{1,2},\\s*\\d{1,2}))+;* *){1,}"
+  },
+  {
+    "name": "tamanio_room",
+    "pattern": "\\d{1,2}\\s*X\\s*\\d{1,2}"
+  },
+  {
+    "name": "tamanio_room",
+    "pattern": "\\d{1,2}\\s*x\\s*\\d{1,2}"
+  },
+  {
+    "name": "objeto",
+    "pattern": "(\\bmesa\\b|\\bmesas\\b|\\bkanban\\b|\\bkanbans\\b|\\bsilla\\b|\\bsillas\\b|\\btelevisor\\b|\\btelevisores\\b|\\bbiblioteca\\b|\\bbibliotecas\\b|\\bestanteria\\b|\\bestanterías\\b|\\bpizarra\\b|\\bpizarras\\b|\\bmesa\\ dividida\\b|\\bcomputadora\\b|\\bcomputadoras\\b|\\bproyector\\b|\\barmario\\ vidriado\\b|\\barmario\\b|\\bsillon\\b|\\bsillones\\b)"
+  }
+]

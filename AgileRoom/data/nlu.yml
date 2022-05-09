@@ -117,6 +117,43 @@ nlu:
     - Afirmativo, me gustaría saber como [sacar plata del cajero](tema_microlearning)]
     - Pensandolo bien, necesito saber como [cambiar la contraseña](tema_microlearning)
     - Correcto, como se hace para [sacar plata del cajero](tema_microlearning)
+    - Si, necesito saber como [iniciar sesión en mi cuenta bancaria](tema_microlearning)
+    - Si, necesito saber como [iniciar sesión en mi cuenta del banco](tema_microlearning)
+    
+- intent: informar_duda
+  examples: |
+    - Me podrías repetir [lo ultimo](duda)?
+    - Me podes volver a explicar
+    - No entendí [esta parte](duda)
+    - No entendí [de cuántos dígitos es la contraseña](duda)
+    - No te sigo
+    - Me perdí
+    - Tengo una duda
+    - No me queda claro [confirma la contraseña](duda) 
+    - No está claro
+    - No entiendo como [confirmar la contraseña](duda)
+    - No comprendo como [confirmar la contraseña](duda)
+    - No puedo entender como se [confirma la contraseña](duda)
+    - No logro comprender como [confirmar la contraseña](duda)
+    - No puedo comprender como [confirmar la contraseña](duda)
+    - Como [confirmar la contraseña](duda)
+    - Que 
+    - Donde
+    - Cuando
+    - Por que
+    - Para que
+    - Cuantos
+    - Que cantidad
+
+- lookup: duda
+  examples: |
+    - de cuántos dígitos es la contraseña
+    - lo último
+    - esta parte
+    - confirma la contraseña
+    - digitos tiene la contraseña
+    - confirmar la contraseña
+
 - intent: informar_tamanio_room
   examples: |
     - el tamaño es de [10x10](tamanio_room)

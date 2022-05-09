@@ -80,9 +80,23 @@ class ActionDeterminarRoom(Action):
             if(tema_microlearning == "crear un room"):
                 dispatcher.utter_message(text = "Crear room," + "20"+ "," + "20")
                 return[]
+                
 
-            #tal vez tener un mapa donde las claves sean los temas y los valores sean los tipos de rooms
-            room_microlearning = "RoomBanco"
+            #ejemplo de diccionario para cuando haya más rooms
+            roomsportema = {
+                "sacar plata del cajero": "RoomBanco",
+                "sacar plata de un cajero": "RoomBanco",
+                "cambiar la contraseña": "RoomBanco",
+                "iniciar sesión en mi cuenta del banco": "RoomBanco",
+                "iniciar sesión en mi cuenta bancaria": "RoomBanco",          
+            }
+            #debería poder actualizar roomsportema si se detecta una entidad de tema_microlearning que no esté en el dict
+
+            if tema_microlearning in roomsportema.keys():
+                room_microlearning = roomsportema.get(tema_microlearning)
+
+            #room_microlearning = "RoomBanco"
             dispatcher.utter_message(text = "Room microlearning," + room_microlearning + "," + tema_microlearning)
+
             return[]
         

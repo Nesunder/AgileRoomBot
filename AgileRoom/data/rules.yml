@@ -43,13 +43,19 @@ rules:
   - intent: aprender
   - action: action_determinar_room
   - action: utter_informar_microlearning
-  - action: utter_preguntar_necesita_algo_mas
 
-- rule: guarda objeto
+- rule: guardar objeto
   steps:
   - intent: informar_posicion
   - action: action_guardar_objeto
   - action: utter_preguntar_siguiente_objeto
+
+- rule: responder duda
+  steps:
+  - intent: informar_duda
+  - action: action_responder_duda
+
+
 
 
 

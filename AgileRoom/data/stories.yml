@@ -42,19 +42,12 @@ stories:
     - intent: aprender
     - action: action_determinar_room
     - action: utter_informar_microlearning
-    - action: utter_preguntar_necesita_algo_mas
-    - intent: negacion
-    - action: utter_despedida
-
 
 - story: microlearning_crear_room
   steps:
     - intent: aprender
     - action: action_determinar_room
     - action: utter_informar_microlearning
-    - action: utter_preguntar_necesita_algo_mas
-    - intent: afirmacion
-    - action: utter_preguntar_que_necesita
     - intent: crear_sala
     - action: utter_preguntar_tamanio_room
 
@@ -153,9 +146,7 @@ stories:
   - intent: aprender
   - action: action_determinar_room
   - action: utter_informar_microlearning
-  - action: utter_preguntar_necesita_algo_mas
-  - intent: negacion
-  - action: utter_despedida
+
 
 - story: crear_room_aprender_directo
   steps:
@@ -245,9 +236,7 @@ stories:
     - tema_microlearning: sacar plata del cajero
   - action: action_determinar_room
   - action: utter_informar_microlearning
-  - action: utter_preguntar_necesita_algo_mas
-  - intent: negacion
-  - action: utter_despedida
+
 
 
 - story: interactive_story_1
@@ -259,7 +248,6 @@ stories:
     - tema_microlearning: sacar plata de un cajero
   - action: action_determinar_room
   - action: utter_informar_microlearning
-  - action: utter_preguntar_necesita_algo_mas
   - intent: crear_sala
   - action: utter_preguntar_tamanio_room
   - intent: informar_tamanio_room
@@ -321,3 +309,28 @@ stories:
   - action: utter_preguntar_necesita_algo_mas
   - intent: agradecimiento
   - action: utter_agradecimiento
+
+- story: dudas_microtraining
+  steps:
+  - intent: aprender
+    entities:
+    - tema_microlearning: sacar plata de un cajero
+  - slot_was_set:
+    - tema_microlearning: sacar plata de un cajero
+  - action: action_determinar_room
+  - action: utter_informar_microlearning
+  - intent: informar_duda
+    entities:
+    - duda: dígitos tiene la contraseña
+  - action: action_responder_duda
+  - intent: informar_duda
+    entities:
+    - duda: lo ultimo
+  - action: action_responder_duda
+  - intent: informar_duda
+    entities:
+    - duda: confirma la contraseña
+    - duda: confirma la contraseña
+  - action: action_responder_duda
+  - intent: informar_duda
+  - action: action_responder_duda

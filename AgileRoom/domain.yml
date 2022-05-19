@@ -11,22 +11,22 @@ intents:
 - crear_sala
 - despedida
 - informar_cantidad
+- informar_duda
 - informar_objeto
 - informar_posicion
 - informar_tamanio_room
 - negacion
 - presentacion
 - saludo
-- informar_duda
 entities:
 - tema_microlearning
+- duda
 - posicion
 - tamanio_room
 - objeto
 - cantidad
 - nombre
 - room_microlearning
-- duda
 slots:
   nombre:
     type: text
@@ -101,6 +101,14 @@ slots:
     mappings:
     - type: from_entity
       entity: room_microlearning
+  duda:
+    type: text
+    initial_value: nada
+    influence_conversation: false
+    mappings:
+    - type: from_entity
+      entity: duda
+   
 responses:
   utter_saludo:
   - text: Hola, soy AgileRoom y puedo crear rooms dinámicos a tu medida, con quien tengo el gusto?
@@ -142,6 +150,7 @@ actions:
 - action_guardar_nombre
 - action_guardar_objeto
 - action_guardar_tamanio
+- action_responder_duda
 - utter_agradecimiento
 - utter_despedida
 - utter_informar_microlearning

@@ -1,5 +1,7 @@
 from typing import Any, Text, Dict, List
 
+from jinja2 import TemplateAssertionError
+
 from rasa_sdk import Action, Tracker
 from rasa_sdk.executor import CollectingDispatcher
 from rasa_sdk.events import SlotSet
@@ -86,6 +88,7 @@ class ActionDeterminarRoom(Action):
             roomsportema = {
                 "sacar plata del cajero": "RoomBanco",
                 "sacar plata de un cajero": "RoomBanco",
+                "saca plata de un cajero": "RoomBanco",
                 "cambiar la contraseña": "RoomBanco",
                 "iniciar sesión en mi cuenta del banco": "RoomBanco",
                 "iniciar sesión en mi cuenta bancaria": "RoomBanco",          
@@ -100,3 +103,37 @@ class ActionDeterminarRoom(Action):
 
             return[]
         
+class ActionResponderDuda(Action):
+    def name(self) -> Text:
+        return "action_responder_duda"
+    def run(self, dispatcher: CollectingDispatcher,tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        duda = next(tracker.get_latest_entity_values("duda"), None)
+       #duda = str(tracker.get_slot("duda"))
+        duda = str(duda)
+
+        #convendría hacer una entidad diferente para cada tema y poner sinónimos?
+        if(duda == "confirma la contraseña"):
+            duda = "confirmar la contraseña"
+
+        if(duda == "de cuantos digitos es la contraseña" or duda == "digitos tiene la contraseña" or duda == "cantidad de digitos de la contraseña"):
+            duda = "longitud contraseña"
+
+        respuestasduda = {
+            "lo ultimo": "Ahora lo repetimos",
+            "la ultima parte": "Si, por su puesto. Ahora lo repetimos",
+            "esta parte": "Lo vemos de nuevo, ok?",
+            "confirmar la contraseña": "Para confirmar la contraseña tenés que escribirla una segunda vez, asegurate de que coincidan y continuá con el siguiente paso",
+            "longitud contraseña": "La contraseña tiene 6 dígitos",
+        }   
+
+        if duda in respuestasduda.keys():
+            message = respuestasduda.get(duda)
+            dispatcher.utter_message(text=str(message))
+            return[]
+
+        message = "Cuál es tu duda?"
+        dispatcher.utter_message(text=str(message))
+       
+        return []      

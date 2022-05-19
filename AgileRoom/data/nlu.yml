@@ -105,6 +105,7 @@ nlu:
     - necesito ayuda para [cambiar la contraseña del cajero](tema_microlearning)
     - me gustaria saber como [sacar plata del cajero](tema_microlearning) del [banco](room_microlearning)
     - hola, necesito saber como [sacar plata de un cajero](tema_microlearning)
+    - hola, quiero saber como [sacar plata de un cajero](tema_microlearning)
 - intent: afirmar+aprender
   examples: |
     - Si, quiero aprender a [crear un room](tema_microlearning)
@@ -119,7 +120,6 @@ nlu:
     - Correcto, como se hace para [sacar plata del cajero](tema_microlearning)
     - Si, necesito saber como [iniciar sesión en mi cuenta bancaria](tema_microlearning)
     - Si, necesito saber como [iniciar sesión en mi cuenta del banco](tema_microlearning)
-    
 - intent: informar_duda
   examples: |
     - Me podrías repetir [lo ultimo](duda)?
@@ -129,7 +129,7 @@ nlu:
     - No te sigo
     - Me perdí
     - Tengo una duda
-    - No me queda claro [confirma la contraseña](duda) 
+    - No me queda claro [confirma la contraseña](duda)
     - No está claro
     - No entiendo como [confirmar la contraseña](duda)
     - No comprendo como [confirmar la contraseña](duda)
@@ -137,23 +137,17 @@ nlu:
     - No logro comprender como [confirmar la contraseña](duda)
     - No puedo comprender como [confirmar la contraseña](duda)
     - Como [confirmar la contraseña](duda)
-    - Que 
+    - Que
     - Donde
     - Cuando
     - Por que
     - Para que
     - Cuantos
     - Que cantidad
-
-- lookup: duda
-  examples: |
-    - de cuántos dígitos es la contraseña
-    - lo último
-    - esta parte
-    - confirma la contraseña
-    - digitos tiene la contraseña
-    - confirmar la contraseña
-
+    - No entendí cuantos [dígitos tiene la contraseña](duda)
+    - Me podrías repetir [lo ultimo](duda)?
+    - Como se [confirma la contraseña](duda)?
+    - No entendí [la ultima parte](duda), podríamos repetirla?
 - intent: informar_tamanio_room
   examples: |
     - el tamaño es de [10x10](tamanio_room)
@@ -189,7 +183,6 @@ nlu:
     - quiero crear algunos [televisores](objeto)
     - quiero crear algunas [computadoras](objeto)
     - voy a necesitar un [kanban](objeto)
-
 - intent: afirmar+informar_objeto
   examples: |
     - Si, quiero que tenga una [mesa](objeto)
@@ -236,7 +229,6 @@ nlu:
     - quiero [10](cantidad)
     - quiero [15](cantidad)
     - quiero [20](cantidad)
-    - [1](cantidad)
 - intent: informar_posicion
   examples: |
     - [5,5; 10,10; 20,20](posicion)
@@ -259,7 +251,6 @@ nlu:
     - posicion: [17,23;15,20;4,7;10,19;10,10](posicion)
     - posicion: [17,23; 15,20; 4,7; 10,19; 10,10](posicion)
     - [15,10;10,15](posicion)
-
 - regex: cantidad
   examples: |
     - \d{1, }
@@ -270,6 +261,14 @@ nlu:
   examples: |
     - \d{1,2}\s*X\s*\d{1,2}
     - \d{1,2}\s*x\s*\d{1,2}
+- lookup: duda
+  examples: |
+    - de cuántos dígitos es la contraseña
+    - lo último
+    - esta parte
+    - confirma la contrase
+    - digitos tiene la contraseña
+    - confirmar la contraseña
 - lookup: objeto
   examples: |
     - mesa

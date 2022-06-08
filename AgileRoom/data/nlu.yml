@@ -78,6 +78,7 @@ nlu:
     - ninguno mas
     - no
     - ninguno más
+    - nada mas
 - intent: crear_sala
   examples: |
     - Quiero crear una sala
@@ -106,6 +107,10 @@ nlu:
     - me gustaria saber como [sacar plata del cajero](tema_microlearning) del [banco](room_microlearning)
     - hola, necesito saber como [sacar plata de un cajero](tema_microlearning)
     - hola, quiero saber como [sacar plata de un cajero](tema_microlearning)
+    - Neceisto [sacar dinero de un cajero](tema_microlearning)
+    - Necesito [sacar dinero del cajero](tema_microlearning)
+    - hola, no se como [sacar plata de un cajero](tema_microlearning)
+    
 - intent: afirmar+aprender
   examples: |
     - Si, quiero aprender a [crear un room](tema_microlearning)
@@ -120,6 +125,7 @@ nlu:
     - Correcto, como se hace para [sacar plata del cajero](tema_microlearning)
     - Si, necesito saber como [iniciar sesión en mi cuenta bancaria](tema_microlearning)
     - Si, necesito saber como [iniciar sesión en mi cuenta del banco](tema_microlearning)
+
 - intent: informar_duda
   examples: |
     - Me podrías repetir [lo ultimo](duda)?
@@ -145,9 +151,18 @@ nlu:
     - Cuantos
     - Que cantidad
     - No entendí cuantos [dígitos tiene la contraseña](duda)
-    - Me podrías repetir [lo ultimo](duda)?
     - Como se [confirma la contraseña](duda)?
     - No entendí [la ultima parte](duda), podríamos repetirla?
+    - [Cuál es el chip](duda)?
+    - [Cual es el chip](duda)?
+    - Dónde [está el chip](duda)?
+    - Donde [está el chip](duda)?
+    - [No veo el chip](duda)
+    - [Ya está](duda)?
+    - [Ya esta](duda)?
+    - [Ya está listo](duda)?
+    - [Ya esta listo](duda)?
+
 - intent: informar_tamanio_room
   examples: |
     - el tamaño es de [10x10](tamanio_room)

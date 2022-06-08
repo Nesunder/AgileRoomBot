@@ -2,6 +2,7 @@ version: '3.1'
 session_config:
   session_expiration_time: 60
   carry_over_slots_to_new_session: true
+  
 intents:
 - afirmacion
 - afirmar+aprender
@@ -18,15 +19,17 @@ intents:
 - negacion
 - presentacion
 - saludo
+
 entities:
-- tema_microlearning
 - duda
+- tema_microlearning
 - posicion
 - tamanio_room
 - objeto
 - cantidad
 - nombre
 - room_microlearning
+
 slots:
   nombre:
     type: text
@@ -108,7 +111,7 @@ slots:
     mappings:
     - type: from_entity
       entity: duda
-   
+
 responses:
   utter_saludo:
   - text: Hola, soy AgileRoom y puedo crear rooms dinámicos a tu medida, con quien tengo el gusto?
@@ -138,14 +141,22 @@ responses:
   utter_preguntar_necesita_algo_mas:
   - text: Necesitás algo más?
   - text: Puedo hacer algo más por vos?
-  - text: Querías hacer algom más?
+  - text: Querías hacer algo más?
   utter_preguntar_que_necesita:
   - text: Qué necesitás?
   - text: Decime qué es y lo hago
   - text: Dale, decime que es lo que precisás
   utter_informar_microlearning:
   - text: Perfecto, voy a preparar una escena para que puedas aprender a {tema_microlearning}
+  utter_explicar_tarjeta:
+  - text: Si te fijás, es el pequeño cuadradito de color plateado ¿Lo ves?
+  utter_explicar_tarjeta_introduccion:
+  - text: Perfecto, introducila de ese lado en la boquilla verde
+  utter_clave_personal:
+  - text: Bien, ahora tenés que introducir tu clave personal en el teclado numérico de abajo y tocar el botón verde “INGRESAR” que figura en la pantalla táctil.
+
 actions:
+- action_comenzar_microtraining
 - action_determinar_room
 - action_guardar_nombre
 - action_guardar_objeto
@@ -153,6 +164,7 @@ actions:
 - action_responder_duda
 - utter_agradecimiento
 - utter_despedida
+- utter_explicar_tarjeta
 - utter_informar_microlearning
 - utter_pedir_cantidad
 - utter_pedir_posiciones

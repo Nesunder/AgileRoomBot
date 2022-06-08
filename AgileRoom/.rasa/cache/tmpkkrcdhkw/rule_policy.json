@@ -1,0 +1,41 @@
+{
+  "lookup": {
+    "rules": {
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informar_objeto\"}}]": "utter_pedir_cantidad",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informar_objeto\"}}, {\"prev_action\": {\"action_name\": \"utter_pedir_cantidad\"}, \"user\": {\"intent\": \"informar_objeto\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informar_tamanio_room\"}}]": "action_guardar_tamanio",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informar_tamanio_room\"}}, {\"prev_action\": {\"action_name\": \"action_guardar_tamanio\"}, \"user\": {\"intent\": \"informar_tamanio_room\"}}]": "utter_preguntar_objetos",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informar_tamanio_room\"}}, {\"prev_action\": {\"action_name\": \"action_guardar_tamanio\"}, \"user\": {\"intent\": \"informar_tamanio_room\"}}, {\"prev_action\": {\"action_name\": \"utter_preguntar_objetos\"}, \"user\": {\"intent\": \"informar_tamanio_room\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"aprender\"}}]": "utter_informar_microlearning",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"aprender\"}}, {\"prev_action\": {\"action_name\": \"utter_informar_microlearning\"}, \"user\": {\"intent\": \"aprender\"}}]": "action_determinar_room",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"aprender\"}}, {\"prev_action\": {\"action_name\": \"utter_informar_microlearning\"}, \"user\": {\"intent\": \"aprender\"}}, {\"prev_action\": {\"action_name\": \"action_determinar_room\"}, \"user\": {\"intent\": \"aprender\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"crear_sala\"}}]": "utter_preguntar_tamanio_room",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"crear_sala\"}}, {\"prev_action\": {\"action_name\": \"utter_preguntar_tamanio_room\"}, \"user\": {\"intent\": \"crear_sala\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"saludo\"}}]": "utter_saludo",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"saludo\"}}, {\"prev_action\": {\"action_name\": \"utter_saludo\"}, \"user\": {\"intent\": \"saludo\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informar_posicion\"}}]": "action_guardar_objeto",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informar_posicion\"}}, {\"prev_action\": {\"action_name\": \"action_guardar_objeto\"}, \"user\": {\"intent\": \"informar_posicion\"}}]": "utter_preguntar_siguiente_objeto",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informar_posicion\"}}, {\"prev_action\": {\"action_name\": \"action_guardar_objeto\"}, \"user\": {\"intent\": \"informar_posicion\"}}, {\"prev_action\": {\"action_name\": \"utter_preguntar_siguiente_objeto\"}, \"user\": {\"intent\": \"informar_posicion\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"presentacion\"}}]": "action_guardar_nombre",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"presentacion\"}}, {\"prev_action\": {\"action_name\": \"action_guardar_nombre\"}, \"user\": {\"intent\": \"presentacion\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informar_cantidad\"}}]": "utter_pedir_posiciones",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informar_cantidad\"}}, {\"prev_action\": {\"action_name\": \"utter_pedir_posiciones\"}, \"user\": {\"intent\": \"informar_cantidad\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informar_duda\"}}]": "action_responder_duda",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"informar_duda\"}}, {\"prev_action\": {\"action_name\": \"action_responder_duda\"}, \"user\": {\"intent\": \"informar_duda\"}}]": "action_listen",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"agradecimiento\"}}]": "utter_agradecimiento",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"agradecimiento\"}}, {\"prev_action\": {\"action_name\": \"utter_agradecimiento\"}, \"user\": {\"intent\": \"agradecimiento\"}}]": "action_listen"
+    },
+    "rule_only_slots": [],
+    "rule_only_loops": [],
+    "rules_for_loop_unhappy_path": {},
+    "rules_not_in_stories": [
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"saludo\"}}, {\"prev_action\": {\"action_name\": \"utter_saludo\"}, \"user\": {\"intent\": \"saludo\"}}]",
+      "predicting default action with intent restart",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"saludo\"}}]",
+      "predicting default action with intent back",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"presentacion\"}}, {\"prev_action\": {\"action_name\": \"action_guardar_nombre\"}, \"user\": {\"intent\": \"presentacion\"}}]",
+      "[{\"prev_action\": {\"action_name\": \"action_listen\"}, \"user\": {\"intent\": \"presentacion\"}}]",
+      "predicting default action with intent session_start"
+    ]
+  }
+}

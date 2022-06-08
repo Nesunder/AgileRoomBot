@@ -1,5 +1,5 @@
 from typing import Any, Text, Dict, List
-
+import time
 from jinja2 import TemplateAssertionError
 
 from rasa_sdk import Action, Tracker
@@ -84,24 +84,24 @@ class ActionDeterminarRoom(Action):
                 return[]
                 
 
-            #ejemplo de diccionario para cuando haya más rooms
-            roomsportema = {
-                "sacar plata del cajero": "RoomBanco",
-                "sacar plata de un cajero": "RoomBanco",
-                "saca plata de un cajero": "RoomBanco",
-                "cambiar la contraseña": "RoomBanco",
-                "iniciar sesión en mi cuenta del banco": "RoomBanco",
-                "iniciar sesión en mi cuenta bancaria": "RoomBanco",          
+            #ejemplo de diccionario para cuando haya más rooms, podría ser una lista asi es mutable y que esté predefinida
+            romsportema = {
+                ("sacar plata del cajero", "sacar plata de un cajero", "saca plata de un cajero", "cambiar la contraseña", "iniciar sesion en mi cuenta del banco", "iniciar sesion en mi cuenta bancaria", "sacar dinero del cajero", "sacar dinero de un cajero") : "RoomBanco"
             }
+
             #debería poder actualizar roomsportema si se detecta una entidad de tema_microlearning que no esté en el dict
 
-            if tema_microlearning in roomsportema.keys():
-                room_microlearning = roomsportema.get(tema_microlearning)
+            for key in romsportema.keys():
+                if tema_microlearning in key:
+                    room_microlearning = romsportema.get(key)
 
-            #room_microlearning = "RoomBanco"
+            if(room_microlearning == "RoomBanco"):
+                dispatcher.utter_message(text = "Acompañame a un cajero que este libre, por favor")
+
             dispatcher.utter_message(text = "Room microlearning," + room_microlearning + "," + tema_microlearning)
+            
+            return[SlotSet("room_microlearning", "RoomBanco")]
 
-            return[]
         
 class ActionResponderDuda(Action):
     def name(self) -> Text:
@@ -109,31 +109,40 @@ class ActionResponderDuda(Action):
     def run(self, dispatcher: CollectingDispatcher,tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
+        DUDA_LONG = "longitud contraseña"
+
         duda = next(tracker.get_latest_entity_values("duda"), None)
-       #duda = str(tracker.get_slot("duda"))
         duda = str(duda)
 
-        #convendría hacer una entidad diferente para cada tema y poner sinónimos?
-        if(duda == "confirma la contraseña"):
-            duda = "confirmar la contraseña"
+        respuestasdudatuple = {
+            ("de cuantos digitos es la contraseña", "digitos tiene la contraseña", "cantidad de digitos de la contraseña", DUDA_LONG, "tamaño contraseña") : "La contraseña tiene 6 dígitos",
+            ("lo ultimo", "la ultima parte", "esto", "esta parte") : "Ahora lo repetimos",
+            ("confirma la contraseña", "confirmar la contraseña"): "Para confirmar la contraseña tenés que escribirla una segunda vez, asegurate de que coincidan y continuá con el siguiente paso",            
+            ("Cuál es el chip", "Cual es el chip", "Dónde está el chip?", "Donde está el chip?", "No veo el chip") : "Si te fijás, es el pequeño cuadradito de color plateado ¿Lo ves?",
+            ("Ya está", "Ya esta", "Ya está listo", "Ya esta listo") : "Si, eso es todo"
+        }
 
-        if(duda == "de cuantos digitos es la contraseña" or duda == "digitos tiene la contraseña" or duda == "cantidad de digitos de la contraseña"):
-            duda = "longitud contraseña"
-
-        respuestasduda = {
-            "lo ultimo": "Ahora lo repetimos",
-            "la ultima parte": "Si, por su puesto. Ahora lo repetimos",
-            "esta parte": "Lo vemos de nuevo, ok?",
-            "confirmar la contraseña": "Para confirmar la contraseña tenés que escribirla una segunda vez, asegurate de que coincidan y continuá con el siguiente paso",
-            "longitud contraseña": "La contraseña tiene 6 dígitos",
-        }   
-
-        if duda in respuestasduda.keys():
-            message = respuestasduda.get(duda)
-            dispatcher.utter_message(text=str(message))
-            return[]
+        for key in respuestasdudatuple.keys():
+            if duda in key:
+                message = respuestasdudatuple.get(key)
+                dispatcher.utter_message(text=str(message))
+                return[]
 
         message = "Cuál es tu duda?"
         dispatcher.utter_message(text=str(message))
        
         return []      
+
+class ActionComenzarMicrotraining(Action):
+    def name(self) -> Text:
+        return "action_comenzar_microtraining"
+    def run(self, dispatcher: CollectingDispatcher,tracker: Tracker,
+            domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
+        
+        time.sleep(5)
+        room_microlearning = str(tracker.get_slot("room_microlearning"))
+
+        if(room_microlearning == "RoomBanco"):
+            dispatcher.utter_message(text="Tomá tu tarjeta y fijate que tiene un chip. De ese lado, introducila en la boquilla iluminada de verde")
+        
+        return[]

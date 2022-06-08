@@ -40,14 +40,16 @@ stories:
 - story: microlearning
   steps:
     - intent: aprender
-    - action: action_determinar_room
     - action: utter_informar_microlearning
+    - action: action_determinar_room
+    - action: action_comenzar_microtraining
 
 - story: microlearning_crear_room
   steps:
     - intent: aprender
-    - action: action_determinar_room
     - action: utter_informar_microlearning
+    - action: action_determinar_room
+    - action: action_comenzar_microtraining
     - intent: crear_sala
     - action: utter_preguntar_tamanio_room
 
@@ -144,9 +146,9 @@ stories:
   - intent: afirmacion
   - action: utter_preguntar_que_necesita
   - intent: aprender
-  - action: action_determinar_room
   - action: utter_informar_microlearning
-
+  - action: action_determinar_room
+  - action: action_comenzar_microtraining
 
 - story: crear_room_aprender_directo
   steps:
@@ -183,7 +185,9 @@ stories:
   - intent: negacion
   - action: utter_preguntar_necesita_algo_mas
   - intent: afirmar+aprender
+  - action: utter_informar_microlearning
   - action: action_determinar_room
+  - action: action_comenzar_microtraining
 
 - story: interactive_story_crear_aprender
   steps:
@@ -234,10 +238,9 @@ stories:
     - tema_microlearning: sacar plata del cajero
   - slot_was_set:
     - tema_microlearning: sacar plata del cajero
-  - action: action_determinar_room
   - action: utter_informar_microlearning
-
-
+  - action: action_determinar_room
+  - action: action_comenzar_microtraining
 
 - story: interactive_story_1
   steps:
@@ -246,8 +249,9 @@ stories:
     - tema_microlearning: sacar plata de un cajero
   - slot_was_set:
     - tema_microlearning: sacar plata de un cajero
-  - action: action_determinar_room
   - action: utter_informar_microlearning
+  - action: action_determinar_room
+  - action: action_comenzar_microtraining
   - intent: crear_sala
   - action: utter_preguntar_tamanio_room
   - intent: informar_tamanio_room
@@ -314,11 +318,12 @@ stories:
   steps:
   - intent: aprender
     entities:
-    - tema_microlearning: sacar plata de un cajero
+    - tema_microlearning: cambiar la contraseña
   - slot_was_set:
-    - tema_microlearning: sacar plata de un cajero
-  - action: action_determinar_room
+    - tema_microlearning: cambiar la contraseña
   - action: utter_informar_microlearning
+  - action: action_determinar_room
+  - action: action_comenzar_microtraining
   - intent: informar_duda
     entities:
     - duda: dígitos tiene la contraseña
@@ -334,3 +339,41 @@ stories:
   - action: action_responder_duda
   - intent: informar_duda
   - action: action_responder_duda
+
+- story: dudas_microtraining_especifica
+  steps:
+  - intent: aprender
+    entities:
+    - tema_microlearning: sacar plata de un cajero
+  - slot_was_set:
+    - tema_microlearning: sacar plata de un cajero
+  - action: utter_informar_microlearning
+  - action: action_determinar_room
+  - action: action_comenzar_microtraining
+  - intent: informar_duda
+    entities:
+    - duda: Cuál es el chip?
+  - action: action_responder_duda
+  - intent: afirmacion
+  - action: utter_explicar_tarjeta_introduccion
+
+
+
+- story: interactive_story_1
+  steps:
+  - intent: aprender
+    entities:
+    - tema_microlearning: sacar plata de un cajero
+  - slot_was_set:
+    - tema_microlearning: sacar plata de un cajero
+  - action: utter_informar_microlearning
+  - action: action_determinar_room
+  - slot_was_set:
+    - room_microlearning: RoomBanco
+  - action: action_comenzar_microtraining
+  - intent: informar_duda
+    entities:
+    - duda: Cuál es el chip?
+  - action: action_responder_duda
+  - intent: afirmacion
+  - action: utter_explicar_tarjeta_introduccion

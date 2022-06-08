@@ -41,8 +41,9 @@ rules:
 - rule: microlearning
   steps:
   - intent: aprender
-  - action: action_determinar_room
   - action: utter_informar_microlearning
+  - action: action_determinar_room
+  - action: action_comenzar_microtraining
 
 - rule: guardar objeto
   steps:

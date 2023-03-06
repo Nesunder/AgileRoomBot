@@ -101,6 +101,10 @@ nlu:
     - quiero aprender a [sacar plata de un cajero](tema_microlearning)
     - como se hace para [sacar plata del cajero](tema_microlearning)
     - como se hace para [sacar plata de un cajero](tema_microlearning)
+    - como se [saca plata de un cajero](tema_microlearning)
+    - como [sacar plata en un banco](tema_microlearning)?
+    - en el banco, [como saco plata](tema_microlarning)?
+    - como [saco plata de un cajero de un banco](tema_microlearning?
     - me podrías mostrar como [cambiar la contraseña](tema_microlearning) del banco
     - necesito saber como [cambiar la contraseña del cajero](tema_microlearning)
     - necesito ayuda para [cambiar la contraseña del cajero](tema_microlearning)

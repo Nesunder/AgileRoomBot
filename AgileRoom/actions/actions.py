@@ -85,15 +85,18 @@ class ActionDeterminarRoom(Action):
                 
 
             #ejemplo de diccionario para cuando haya más rooms, podría ser una lista asi es mutable y que esté predefinida
-            romsportema = {
-                ("sacar plata del cajero", "sacar plata de un cajero", "saca plata de un cajero", "cambiar la contraseña", "iniciar sesion en mi cuenta del banco", "iniciar sesion en mi cuenta bancaria", "sacar dinero del cajero", "sacar dinero de un cajero") : "RoomBanco"
+            roomsportema = {
+                ("sacar plata del cajero", "sacar plata de un cajero", "saca plata de un cajero", 
+                "cambiar la contraseña", "iniciar sesion en mi cuenta del banco", 
+                "iniciar sesion en mi cuenta bancaria",
+                 "sacar dinero del cajero", "sacar dinero de un cajero") : "RoomBanco"
             }
 
             #debería poder actualizar roomsportema si se detecta una entidad de tema_microlearning que no esté en el dict
 
-            for key in romsportema.keys():
+            for key in roomsportema.keys():
                 if tema_microlearning in key:
-                    room_microlearning = romsportema.get(key)
+                    room_microlearning = roomsportema.get(key)
 
             if(room_microlearning == "RoomBanco"):
                 dispatcher.utter_message(text = "Acompañame a un cajero que este libre, por favor")
@@ -109,13 +112,12 @@ class ActionResponderDuda(Action):
     def run(self, dispatcher: CollectingDispatcher,tracker: Tracker,
             domain: Dict[Text, Any]) -> List[Dict[Text, Any]]:
         
-        DUDA_LONG = "longitud contraseña"
-
         duda = next(tracker.get_latest_entity_values("duda"), None)
         duda = str(duda)
 
         respuestasdudatuple = {
-            ("de cuantos digitos es la contraseña", "digitos tiene la contraseña", "cantidad de digitos de la contraseña", DUDA_LONG, "tamaño contraseña") : "La contraseña tiene 6 dígitos",
+            ("de cuantos digitos es la contraseña", "digitos tiene la contraseña", 
+            "cantidad de digitos de la contraseña", "longitud contraseña", "tamaño contraseña") : "La contraseña tiene 6 dígitos",
             ("lo ultimo", "la ultima parte", "esto", "esta parte") : "Ahora lo repetimos",
             ("confirma la contraseña", "confirmar la contraseña"): "Para confirmar la contraseña tenés que escribirla una segunda vez, asegurate de que coincidan y continuá con el siguiente paso",            
             ("Cuál es el chip", "Cual es el chip", "Dónde está el chip?", "Donde está el chip?", "No veo el chip") : "Si te fijás, es el pequeño cuadradito de color plateado ¿Lo ves?",
